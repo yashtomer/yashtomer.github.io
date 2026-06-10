@@ -1,0 +1,5 @@
+# Replace yashdeeptomer.com with your real domain once purchased
+User-agent: *
+Allow: /
+
+Sitemap: https://yashdeeptomer.com/sitemap.xml
