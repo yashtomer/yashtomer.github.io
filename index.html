@@ -399,7 +399,10 @@
           if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
         }
       }, { threshold: 0.12 });
-      const els = document.querySelectorAll('.section, .hero');
+      // only animate sections below the fold — hiding above-the-fold
+      // content (the hero) delays LCP and hurts Core Web Vitals
+      const els = [...document.querySelectorAll('.section, .hero')]
+        .filter(el => el.getBoundingClientRect().top > window.innerHeight);
       els.forEach(el => { el.classList.add('reveal'); io.observe(el); });
       setTimeout(() => els.forEach(el => el.classList.add('in-view')), 1500);
     }
